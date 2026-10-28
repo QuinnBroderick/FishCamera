@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fish Cam – Local Viewer</title>
+  <link rel="stylesheet" href="CSS/style.css">   <!-- CSS -->
+</head>
+<body>
+  <header>
+    <h1>Fish Cam – Local Viewer (ESP32‑CAM)</h1>
+  </header>
+
+  <main>
+    <section class="card panel" aria-label="controls">
+
+      <div class="row" style="margin-bottom:8px">
+        <button id="start" class="primary">Start Stream</button>
+        <button id="stop">Stop</button>
+      </div>
+
+      <div class="row" style="margin-bottom:8px">
+        <label for="res">Resolution</label>
+        <select id="res">
+          <option value="3">QVGA (320×240)</option>
+          <option value="5">VGA (640×480)</option>
+          <option value="7" selected>SVGA (800×600)</option>
+          <option value="8">XGA (1024×768)</option>
+        </select>
+        <button id="applyRes">Apply</button>
+      </div>
+
+      <div class="row" style="margin-bottom:8px">
+        <label for="quality">JPEG quality</label>
+        <input id="quality" type="range" min="10" max="63" value="12" />
+        <span id="qualityVal" class="muted">12</span>
+        <button id="applyQuality">Apply</button>
+      </div>
+
+      <div class="row" style="margin-bottom:8px">
+        <label for="flash">Flash (0–255)</label>
+        <input id="flash" type="range" min="0" max="255" value="0" />
+        <span id="flashVal" class="muted">0</span>
+        <button id="applyFlash">Set</button>
+      </div>
+
+      <p class="hint">Tip: This page talks directly to the ESP32‑CAM over HTTP. Keep this file on your computer and open it with a local HTTP server (e.g., VS Code “Live Server”) to avoid mixed‑content issues.</p>
+      <p id="status" class="hint">Status: <span class="muted">idle</span></p>
+    </section>
+
+    <section class="card" aria-label="viewer">
+      <div class="video-wrap">
+        <img id="stream" alt="Live stream" />
+      </div>
+      <div class="toolbar">
+        <div id="ping" class="muted">Ping: –</div>
+        <div id="camStatus" class="muted">Camera: unknown</div>
+      </div>
+    </section>
+  </main>
+ <script src="/js/script.js?v=2025-09-15-1"></script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+/* ================================
+   Root variables & Resets
+   ================================ */
+:root {
+  --gap: 12px;
+
+  /* Palette pulled from your styles */
+  --bg: #0b0f14;
+  --panel: #0f1620;
+  --border: #1f2a36;
+  --text: #e6edf3;
+  --muted: #a3b1c2;
+  --accent: #1d6fd1;
+  --input-bg: #0b0f14;
+  --input-border: #243142;
+  --ok: #39d353;
+  --bad: #ff6b6b;
+  --black: #020304;
+
+  /* Typography */
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Radii & shadows */
+  --radius-card: 14px;
+  --radius-input: 10px;
+  --radius-media: 12px;
+  --shadow-card: 0 4px 20px rgba(0,0,0,.25);
+}
+
+/* Reset-ish */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* ================================
+   Base
+   ================================ */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.45;
+}
+
+/* A11y: visible focus without changing layout */
+:where(a, button, input, select):focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ================================
+   Layout
+   ================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 16px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+h1 { margin: 0; font-size: 18px; }
+
+main {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+@media (max-width: 860px) {
+  main { grid-template-columns: 1fr; }
+}
+
+/* ================================
+   Cards / Panels
+   ================================ */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.panel { padding: 16px; }
+
+/* ================================
+   Controls (inputs, buttons, labels)
+   ================================ */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+label { font-size: 12px; opacity: .9; }
+
+input, select, button {
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-input);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+  transition: filter .12s ease-in-out;
+}
+
+button:hover { filter: brightness(1.05); }
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+button.ghost { background: transparent; }
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   Media / Video area
+   ================================ */
+.video-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-media);
+}
+
+.video-wrap img,
+.video-wrap canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--black);
+}
+
+/* ================================
+   Toolbars
+   ================================ */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ================================
+   Gallery / Thumbnails
+   ================================ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+.thumb {
+  background: var(--black);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+/* ================================
+   Text helpers
+   ================================ */
+.hint { font-size: 12px; color: var(--muted); }
+.ok   { color: var(--ok); }
+.bad  { color: var(--bad); }
+.muted{ color: var(--muted); }
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+
+ /* Layout for the login gate */
+.gate {
+  max-width: 420px;
+  margin: 12vh auto;
+  padding: 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+/* Title and muted text */
+.gate h1 {
+  margin: 0 0 .25rem;
+  font-size: 1.25rem;
+}
+.gate{
+  color: #000000;
+  font-size: .9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Input styling */
+.gate input[type="password"] {
+  padding: .6rem .7rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.gate input[type="username"] {
+  padding: .6rem .7rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+/* Button styling */
+.gate button {
+  padding: .6rem .9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background: #0069d9;
+  color: #fff;
+  font-size: 1rem;
+}
+.gate button:hover {
+  background: #0053b3;
+}
+
+/* Error message */
+.err {
+  color: #b00020;
+  min-height: 1.2em;
+}
