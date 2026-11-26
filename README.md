@@ -32,10 +32,11 @@ To access the camera away from home, I configured port forwarding on my router, 
 
 ## Code
 
-- `FishCam_arduino/` — ESP32-CAM firmware and camera setup
+- `FishCamera/FishCam/` — ESP32-CAM firmware and camera setup
 - `site/` — HTML, CSS, and JavaScript for the viewer and login page
 - `nginx/` — NGINX configuration used to host the site and forward camera requests
-- `auth/` — Work toward a server-side login system; not currently deployed
+
+Only the website files are copied into NGINX's public web directory. The rest of the project stays in the development folder.
 
 Only the website files are copied into NGINX's public web directory. The rest of the project stays in the development folder.
 
